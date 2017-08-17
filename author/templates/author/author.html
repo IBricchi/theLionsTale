@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Author</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/all.css' %}">
+    {% include "fonts.html" %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'author/css/author.css' %}">
+    {% if author_with_rights %}
+        <link rel="stylesheet" href="{% static 'author/css/editAuthor.css' %}">
+    {% endif %}
+</head>
+<body>
+
+{% include "header.html" %}
+
+<div class="profile">
+    <div class = "name">
+        <span>{{author.name}}</span>
+    </div>
+    <div class = "profileImg">
+        {% if author_with_rights %}
+            <form action="{% url 'profilePicChange' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="file"></label>
+                <input type="file" id="file" name="newProfileImg">
+                <input type="hidden" name="authorId" value="{{author.id}}">
+                <input type="submit">
+            </form>
+        {% endif %}
+        <img src="{% static author.static_url %}" alt="{{author.name}}'s profile picture">
+    </div>
+    <div class = "description">
+        <span>
+            {{author.description}}
+        </span>
+        {% if author_with_rights %}
+            <form method="POST" action="{% url 'profileDescChange' %}">
+                {% csrf_token %}
+                <label for="description"></label>
+                <textarea name="newDesc" id="description"></textarea>
+                <input type="hidden" name="authorId" value="{{author.id}}">
+                <input type="submit">
+            </form>
+        {% endif %}
+    </div>
+    <div class="articlesCont">
+        {% for article in all_author_articles %}
+        <div class="articlet">
+            <div class="imgCont" style="background-image: url({% static article.articlefiles_set.all.first.static_url %})"></div>
+            <div class="info">
+                <div class="title"><a href="{% url 'article' article.id %}">{{article.title}}</a></div>
+                <div class="blurb">
+                    {% if article.articlecontent_set.all.first.content|length > 500 %}
+                        {{ article.articlecontent_set.all.first.content|slice:'0:500' }}...
+                    {% else %}
+                        {{ article.articlecontent_set.all.first.content }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <hr>
+        {% endfor %}
+    </div>
+</div>
+
+{% include "footer.html" %}
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+.articleCont{
+    padding: 5vh 0 0 0;
+    width: 100vw;
+    margin: 0 0 0 0;
+}
+.articleCont > .title{
+    width: 100%;
+    padding: 2% 0 8% 0;
+    text-align: center;
+    background: rgb(23, 64, 52);
+    font-size: 8vh;
+}
+.articleCont > .content{
+    width 100%;
+    margin 0;
+}
+.articleCont > .content > .articleItem{
+    width: 80%;
+    margin: 0 0 0 10%;
+}
+.articleCont > .content > .articleItem> .articleImage{
+    width: 100%;
+}

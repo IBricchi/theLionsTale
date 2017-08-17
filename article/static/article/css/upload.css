@@ -1,0 +1,12 @@
+.uploadCont{
+    padding: 5vh 0 0 0;
+    width: 100vw;
+    margin: 0 0 0 0;
+}
+.uploadCont > .upTitle{
+    width: 100%;
+    padding: 2% 0 8% 0;
+    text-align: center;
+    background: rgb(23, 64, 52);
+    font-size: 8vh;
+}

@@ -1,0 +1,38 @@
+<header>
+{% load static %}
+    <nav>
+        <img src="{% static 'img/navLogo.png' %}">
+        <div>
+            <span>Sports</span>
+        </div>
+        <div>
+            <span>Comedy</span>
+        </div>
+        <div>
+            <span>Quizzes</span>
+        </div>
+        <div>
+            <span>CAS</span>
+        </div>
+        <div>
+            <span>Events</span>
+        </div>
+        <div>
+            <span>Opinions</span>
+        </div>
+        <div>
+            <span>Miscellaneous</span>
+        </div>
+        <div>
+            <span>About</span>
+        </div>
+        <div>
+            <span>Archives</span>
+        </div>
+        <div class="navHome">
+            <a href="{% url 'home' %}">
+                <span>Home</span>
+            </a>
+        </div>
+    </nav>
+</header>

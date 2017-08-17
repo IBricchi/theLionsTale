@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.css' %}">
+    {% include "fonts.html" %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'article/css/article.css' %}">
+
+</head>
+<body>
+{% include 'header.html' %}
+
+<div class = "articleCont">
+    <div class = "title">
+        <span>{{article_info.title}}</span>
+    </div>
+    <div class="content">
+        {% for k, v in article_content_json.items %}
+            {% if "text" in k %}
+                {% for paragraph in v.0 %}
+                    {% if paragraph %}
+                        <div class="articleItem">
+                            <p class="articleText">{{ paragraph }}</p>
+                        </div>
+                    {% else %}
+                        <br>
+                    {% endif %}
+                {% endfor %}
+            {% elif "link_image" in k %}
+                <div class="articleItem">
+                    <img src="{{ v.0 }}" alt="image">
+                </div>
+            {% elif "file_image" in k %}
+                {% for file in article_info.articlefiles_set.all %}
+                    {% if file.id == v.1 %}
+                        <div class="articleItem">
+                            <img class="articleImage" src="{% static file.static_url %}" >
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="author">
+        {{article_info.author.name}}
+    </div>
+</div>
+
+{% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'article/css/upload.css' %}">
+
+    {% include 'jquery.html' %}
+    <script src="{% static 'article/js/upload.js' %}"></script>
+</head>
+<body>
+{% include 'header.html' %}
+
+<div class="uploadCont">
+    <div class = "upTitle">
+        <span>Upload</span>
+    </div>
+    <button onclick="addFormInput()">more</button>
+    <select class="newInputType">
+        <option value="text">text</option>
+        <option value="linkImage">link image</option>
+        <option value="fileImage">file image</option>
+    </select>
+    <form class = "uploadForm" action="post/" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="formItem">
+            <label for="title">Title: </label>
+            <input type="text" name="title" id="title"/>
+        </div>
+
+        <div class="formItem">
+            <label for="date">Date: </label>
+            <input type="date" name="date" id="date"/>
+        </div>
+
+        <!--<div class="formItem text">
+            <p>text</p>
+            <label for="0_out">1: </label>
+            <textarea name="0_out" id="0_out"></textarea>
+            <input type="hidden" name="0_type" value="text">
+        </div>
+
+        <div class="formItem fileImage">
+            <p>file image</p>
+            <label for="1_out">2: </label>
+            <textarea name="1_out" id="1_out"></textarea>
+            <label for="1_file">2 file: </label>
+            <input type="file" name="1_file" id="1_file">
+            <input type="hidden" name="1_type" value="file_image">
+        </div>
+
+        <div class="formItem link_image">
+            <p>link image</p>
+            <label for="2_out">3: </label>
+            <textarea name="2_out" id="2_out"></textarea>
+            <input type="hidden" name="2_type" value="link_image">
+        </div>-->
+
+        <input class="uploadFormSize" type="hidden" name="form_size" value="0">
+
+        <input class="uploadFormSubmit" type="submit">
+    </form>
+</div>
+{% if stuff %}
+    {{ stuff }}
+{% endif %}
+{% include 'footer.html' %}
+</body>
+</html>

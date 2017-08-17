@@ -1,0 +1,55 @@
+body{
+    background: rgb(23, 64, 52);
+}
+.profile{
+    padding: 5vh 0 0 0;
+    width: 100vw;
+    margin: 0 0 0 0;
+}
+.profile > .name{
+    width: 100%;
+    padding: 2% 0 8% 0;
+    text-align: center;
+    background: rgb(23, 64, 52);
+    font-size: 8vh;
+}
+.profile > .profileImg{
+    margin: 0 0 3% 10%;
+    width: 80%;
+}
+.profile > .profileImg > img{
+    width: 40%;
+    margin: 0 0 0 30%
+}
+.profile > .description{
+    width: 80%;
+    margin: 0 0 0 10%;
+    background: rgb(9, 37, 29);
+    border-left: rgb(0,0,0) solid 10px;
+    color: rgb(255,255,255);
+}
+.profile > .articlesCont{
+    width: 80%;
+    margin: 0 0 0 10%;
+    background: rgb(18, 51, 42);
+}
+.profile > .articlesCont > .articlet{
+    position: relative;
+    width: 100%;
+}
+.profile > .articlesCont > .articlet > .imgCont{
+    position: absolute;
+    width: 20%;
+    height: 100%;
+	background-repeat: no-repeat;
+	background-size: contain;
+    background-position: center;
+    float: left
+}
+.profile > .articlesCont > .articlet > .info{
+    width: 70%;
+}
+.profile > .articlesCont > .articlet > .info > *{
+    margin-left: 30%;
+    width: 70%;
+}
